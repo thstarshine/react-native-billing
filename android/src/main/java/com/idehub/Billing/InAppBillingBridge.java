@@ -74,6 +74,7 @@ public class InAppBillingBridge extends ReactContextBaseJavaModule implements Ac
                 if (putPromise(PromiseConstants.OPEN, promise)) {
                     try {
                         bp = new BillingProcessor(_reactContext, LICENSE_KEY, this);
+                        bp.loadOwnedPurchasesFromGoogle();
                     } catch (Exception ex) {
                         rejectPromise(PromiseConstants.OPEN, "Failure on open: " + ex.getMessage());
                     }
